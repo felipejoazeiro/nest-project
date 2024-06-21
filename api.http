@@ -1,0 +1,33 @@
+GET http://localhost:3000/events
+
+###
+GET http://localhost:3000/events/clxnmugur0000gv1ub5r6fxpt
+
+###
+# @name createEvent
+POST http://localhost:3000/events
+Content-Type: application/json
+
+{
+    "name" : "New Event 2",
+    "description" : "This is a new event 2",
+    "date" : "2017-01-01T00:00:00",
+    "price" : 60
+}
+
+###
+@eventId = {{createEvent.response.body.id}}
+
+###
+PATCH  http://localhost:3000/events/{{eventId}}
+Content-Type: application/json
+
+{
+    "name" : "Event update",
+    "description" : "This is a new event",
+    "date" : "2017-01-01T00:00:00",
+    "price" : 60
+}
+
+###
+DELETE http://localhost:3000/events/{{eventId}}
